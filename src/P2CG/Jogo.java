@@ -1,11 +1,14 @@
 package P2CG;
 
+import java.util.HashSet;
+
 public class Jogo {
 	private String nomeJogo;
 	private double preco;
 	private int bestScore;
 	private int qtdJogado;
 	private int qtdZerado;
+	private HashSet<Jogabilidade> jogabilidade;
 	
 	public Jogo(String nomeJogo, double preco) {
 		this.nomeJogo = nomeJogo;
@@ -13,6 +16,7 @@ public class Jogo {
 		bestScore = 0;
 		setQtdJogado(0);
 		setQtdZerado(0);
+		setJogabilidade(new HashSet<>());
 	}
 	
 	public void registraJogada(int score, boolean zerou) {
@@ -59,11 +63,17 @@ public class Jogo {
 	public void setQtdZerado(int qtdZerado) {
 		this.qtdZerado = qtdZerado;
 	}
+
+	public HashSet<Jogabilidade> getJogabilidade() {
+		return jogabilidade;
+	}
+
+	public void setJogabilidade(HashSet<Jogabilidade> jogabilidade) {
+		this.jogabilidade = jogabilidade;
+	}
 	
 	
 
 
-
-	
 
 }

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<projectDescription>
+	<name>lab06_TiberioGadelha</name>
+	<comment></comment>
+	<projects>
+	</projects>
+	<buildSpec>
+	</buildSpec>
+	<natures>
+	</natures>
+	<natures>
+      	<nature>org.eclipse.jdt.core.javanature</nature>
+	</natures>
+</projectDescription>
