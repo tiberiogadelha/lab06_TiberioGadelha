@@ -2,40 +2,37 @@ package P2CG;
 
 import java.util.HashSet;
 
-public class Jogo {
+public abstract class Jogo {
 	private String nomeJogo;
-	private double preco;
-	private int bestScore;
-	private int qtdJogado;
-	private int qtdZerado;
+	private int preco;
+	protected int bestScore;
+	protected int qtdJogado;
+	protected int qtdZerado;
 	private HashSet<Jogabilidade> jogabilidade;
+	private int x2p;
 	
-	public Jogo(String nomeJogo, double preco) {
+	public Jogo(String nomeJogo, int preco) {
 		this.nomeJogo = nomeJogo;
 		this.setPreco(preco);
 		bestScore = 0;
-		setQtdJogado(0);
-		setQtdZerado(0);
-		setJogabilidade(new HashSet<>());
+		qtdJogado = 0;
+		qtdZerado = 0;
+		x2p = 0;
+		jogabilidade = new HashSet<>();
 	}
 	
-	public void registraJogada(int score, boolean zerou) {
-		
-	}
-
+	public abstract int registraJogada(int score, boolean zerou) throws Exception;
+	
 	public String getNomeJogo() {
 		return nomeJogo;
 	}
 
-	public void setNomeJogo(String nomeJogo) {
-		this.nomeJogo = nomeJogo;
-	}
 
-	public double getPreco() {
+	public int getPreco() {
 		return preco;
 	}
 
-	public void setPreco(double preco) {
+	public void setPreco(int preco) {
 		this.preco = preco;
 	}
 
@@ -60,17 +57,53 @@ public class Jogo {
 		return qtdZerado;
 	}
 
-	public void setQtdZerado(int qtdZerado) {
-		this.qtdZerado = qtdZerado;
-	}
 
 	public HashSet<Jogabilidade> getJogabilidade() {
 		return jogabilidade;
 	}
 
-	public void setJogabilidade(HashSet<Jogabilidade> jogabilidade) {
-		this.jogabilidade = jogabilidade;
+	public int getX2p() {
+		return x2p;
 	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((jogabilidade == null) ? 0 : jogabilidade.hashCode());
+		result = prime * result + ((nomeJogo == null) ? 0 : nomeJogo.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Jogo other = (Jogo) obj;
+		if (jogabilidade == null) {
+			if (other.jogabilidade != null)
+				return false;
+		} else if (!jogabilidade.equals(other.jogabilidade))
+			return false;
+		if (nomeJogo == null) {
+			if (other.nomeJogo != null)
+				return false;
+		} else if (!nomeJogo.equals(other.nomeJogo))
+			return false;
+		return true;
+	}
+
+	@Override
+	public String toString() {
+		return "Nome Jogo = " + nomeJogo + ", best Score = " + bestScore + ", quantidade Jogado = "
+				+ qtdJogado + ", quantidade zerado = " + qtdZerado + "\n";
+	}
+	
+	
 	
 	
 

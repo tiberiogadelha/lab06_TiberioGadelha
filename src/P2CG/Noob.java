@@ -6,10 +6,13 @@ public class Noob extends Usuario{
 		super(nomeUsuario, nomeLogin);
 	}
 	
+	@Override
 	public boolean compraJogo(Jogo jogo) {
-		if(super.getSaldo() >= (jogo.getPreco()*0.9)) {
-			super.setSaldo(super.getSaldo() - jogo.getPreco());
-			super.getBibliotecaDeJogos().add(jogo);
+		if(saldo >= (jogo.getPreco()*0.9)) {
+			totalGasto += jogo.getPreco()*0.9;
+			saldo -= jogo.getPreco()*0.9;
+			bibliotecaDeJogos.add(jogo);
+			x2p += jogo.getPreco() * 10;
 			return true;
 		}
 		return false;

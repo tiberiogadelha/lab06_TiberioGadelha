@@ -2,21 +2,20 @@ package P2CG;
 
 public class RPG extends Jogo {
 
-	public RPG(String nomeJogo, double preco) {
+	public RPG(String nomeJogo, int preco) {
 		super(nomeJogo, preco);
 	}
 	
 	@Override
 	public int registraJogada(int score, boolean zerou) {
 		if (zerou == true) {
-			this.setQtdZerado(this.getQtdZerado() + 1);
+			qtdZerado++;
 		}
-		if (score > this.getBestScore()) {
-			this.setBestScore(score);
+		if (score > bestScore) {
+			bestScore = score;
 		}
-	
-		this.setQtdJogado(this.getQtdJogado() + 1);
-		return 1;
+		qtdJogado++;
+		return 10;
 	}
 	
 
