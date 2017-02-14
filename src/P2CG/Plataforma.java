@@ -19,4 +19,10 @@ public class Plataforma extends Jogo {
 		return 0;
 
 	}
+	
+	@Override
+	public String toString() {
+		return "+ " + getNomeJogo() + "- Plataforma:" + FIM_DE_LINHA +  "==> Jogou " + qtdJogado + " vez(es)" + FIM_DE_LINHA  + "==> Zerou " + 
+				qtdZerado + "vez(es)" + FIM_DE_LINHA + "==> Maior score: " + bestScore;
+	}
 }

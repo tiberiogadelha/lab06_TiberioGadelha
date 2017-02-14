@@ -27,5 +27,11 @@ public class Luta extends Jogo{
 		qtdJogado++;
 		return 1;
 	}
+	
+	@Override
+	public String toString() {
+		return "+ " + getNomeJogo() + "- Luta:" + FIM_DE_LINHA +  "==> Jogou " + qtdJogado + " vez(es)" + FIM_DE_LINHA  + "==> Zerou " + 
+				qtdZerado + "vez(es)" + FIM_DE_LINHA + "==> Maior score: " + bestScore;
+	}
 
 }

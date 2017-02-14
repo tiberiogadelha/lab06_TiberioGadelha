@@ -3,6 +3,7 @@ package P2CG;
 import java.util.HashSet;
 
 public abstract class Jogo {
+	public static final String FIM_DE_LINHA = System.lineSeparator();
 	private String nomeJogo;
 	private int preco;
 	protected int bestScore;
@@ -97,11 +98,8 @@ public abstract class Jogo {
 		return true;
 	}
 
-	@Override
-	public String toString() {
-		return "Nome Jogo = " + nomeJogo + ", best Score = " + bestScore + ", quantidade Jogado = "
-				+ qtdJogado + ", quantidade zerado = " + qtdZerado + "\n";
-	}
+
+	
 	
 	
 	

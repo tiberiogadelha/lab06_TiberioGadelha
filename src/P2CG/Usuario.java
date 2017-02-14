@@ -3,11 +3,12 @@ package P2CG;
 import java.util.HashSet;
 
 public abstract class Usuario {
+	public static final String FIM_DE_LINHA = System.lineSeparator();
 	private String nomeUsuario;
 	private String nomeLogin;
 	protected double saldo;
 	protected HashSet<Jogo> bibliotecaDeJogos;
-	protected int x2p;
+	private int x2p;
 	protected int totalGasto;
 	
 	public Usuario(String nomeUsuario, String nomeLogin) throws Exception{
@@ -20,7 +21,7 @@ public abstract class Usuario {
 		this.nomeUsuario = nomeUsuario;
 		this.nomeLogin= nomeLogin;
 		saldo = 0;
-		x2p = 0;
+		setX2p(0);
 		totalGasto = 0;
 		bibliotecaDeJogos = new HashSet<>();
 		
@@ -38,7 +39,7 @@ public abstract class Usuario {
 	
 	public void registraJogada(String nomeDoJogo, int score, boolean zerou) throws Exception {
 		if (!(procuraJogo(nomeDoJogo) == null)) {
-			x2p += procuraJogo(nomeDoJogo).registraJogada(score, zerou);
+			setX2p(getX2p() + procuraJogo(nomeDoJogo).registraJogada(score, zerou));
 		}
 		
 	}
@@ -50,6 +51,10 @@ public abstract class Usuario {
 			}
 		}
 		return null;
+	}
+	
+	protected void adicionaX2p(int qtd) {
+		x2p += qtd;
 	}
 
 	public double getSaldo() {
@@ -80,6 +85,19 @@ public abstract class Usuario {
 	public void setBibliotecaDeJogos(HashSet<Jogo> bibliotecaDeJogos) {
 		this.bibliotecaDeJogos = bibliotecaDeJogos;
 	}
+	
+	public int getX2p() {
+		return x2p;
+	}
+
+	public void setX2p(int x2p) {
+		this.x2p = x2p;
+	}
+
+	public void setSaldo(double saldo) {
+		this.saldo = saldo;
+		
+	}
 
 	@Override
 	public int hashCode() {
@@ -106,11 +124,8 @@ public abstract class Usuario {
 		return true;
 	}
 
-	@Override
-	public String toString() {
-		return nomeLogin + "\n" + nomeUsuario + "\n" + "Lista de Jogos: " + bibliotecaDeJogos + "Total de preço dos jogos: R$ "
-				+ totalGasto + "--------------------------------------------";
-	}
+	
+
 	
 
 }

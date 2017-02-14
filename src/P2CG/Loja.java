@@ -6,7 +6,7 @@ import java.util.Iterator;
 public class Loja {
 	private HashSet<Usuario> bancoDeUsuarios = new HashSet<>();
 	
-	public boolean vendeJogo(String nomeLogin, String nomeJogo, int preco){
+	public boolean vendeJogo(String nomeLogin, Jogo jogo){
 		return false;
 		
 	}
@@ -48,5 +48,25 @@ public class Loja {
 			}
 		}
 		return null;
+	}
+	
+	public boolean upgradeUsuario(String nomeLogin) throws Exception {
+		Usuario OldUser = procuraUsuario(nomeLogin);
+		if(OldUser != null) {
+			Usuario user1 = new Noob("blabla","blabalba");
+			if(OldUser.getClass() == user1.getClass()){
+				if(OldUser.getX2p() >= 1000) {
+					Usuario newUser = new Veterano(OldUser.getNomeLogin(),OldUser.getNomeLogin());
+					newUser.setBibliotecaDeJogos(OldUser.getBibliotecaDeJogos());
+					newUser.setX2p(OldUser.getX2p());
+					newUser.setSaldo(OldUser.getSaldo());
+					bancoDeUsuarios.add(newUser);
+					bancoDeUsuarios.remove(OldUser);
+				}	
+			} 
+			throw new Exception("O jogador ja e um veterano ou nao possui a quantidade de x2p necessaria.");		
+		}
+			
+		}
 	}
 }
