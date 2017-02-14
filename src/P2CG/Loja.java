@@ -62,11 +62,13 @@ public class Loja {
 					newUser.setSaldo(OldUser.getSaldo());
 					bancoDeUsuarios.add(newUser);
 					bancoDeUsuarios.remove(OldUser);
+					return true;
 				}	
 			} 
 			throw new Exception("O jogador ja e um veterano ou nao possui a quantidade de x2p necessaria.");		
 		}
+		return false;
 			
 		}
 	}
-}
+
