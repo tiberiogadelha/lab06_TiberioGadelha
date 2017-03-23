@@ -1,0 +1,70 @@
+package cpd.arquivo;
+
+import java.io.BufferedOutputStream;
+import java.io.DataOutputStream;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.NotSerializableException;
+import java.io.ObjectOutputStream;
+import java.util.Set;
+
+import cdp.controllers.ParticipacaoController;
+import cdp.controllers.PessoaController;
+import cdp.controllers.ProjetoController;
+import cdp.pessoa.Pessoa;
+import cdp.projetos.Projeto;
+
+public class EscreveDados {
+	private String diretorio = "arquivos_sistema";
+	private static final String DATA_FILE = "cpc_ufcg.dat";
+	
+	
+	public void salvar(ParticipacaoController participacoes, PessoaController pessoas, ProjetoController projetos) throws FileNotFoundException, IOException {
+		salvarProjetos(projetos);
+		salvarPessoas(pessoas);
+	}
+	 
+
+	private void salvarProjetos(ProjetoController projetos) throws IOException, FileNotFoundException {
+
+		ObjectOutputStream out = null;
+
+		try {
+
+			out = new ObjectOutputStream(new BufferedOutputStream(new FileOutputStream(DATA_FILE)));
+
+			for (Projeto p: projetos.getProjetos()) {
+				out.writeObject(p);
+
+			}
+
+		} finally {
+			out.close();
+
+		}
+
+}
+	
+	public void salvarPessoas(PessoaController pessoas) throws IOException {
+		ObjectOutputStream out = null;
+
+		try {
+
+			out = new ObjectOutputStream(new BufferedOutputStream(new FileOutputStream(DATA_FILE)));
+
+			for (Pessoa p: pessoas.getPessoas()) {
+				out.writeObject(p);
+
+			}
+
+		} finally {
+		
+			out.close();
+
+		}
+
+}
+}
+
